@@ -110,5 +110,3 @@ Handle errors gracefully with TRY...CATCH.
 
 ✍️ Author: Daim Malik
 📅 Created: September 2025
-    balance DECIMAL(10,2)
-);
