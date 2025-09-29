@@ -1,0 +1,27 @@
+begin try 
+
+begin transaction
+
+update accounts set balance = balance -1000 where id = 1
+
+if @@ROWCOUNT = 0
+THROW 50001,'Not Account Found!',1;
+
+update accounts set balance = balance +1000 where id = 2
+
+if @@ROWCOUNT = 0
+THROW 50002,'Not Account Found!',1;
+
+COMMIT;
+
+end try
+
+begin catch 
+
+rollback;
+PRINT 'Transaction Failed!';
+PRINT ERROR_MESSAGE();
+
+end catch
+
+select * from accounts
